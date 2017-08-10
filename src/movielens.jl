@@ -12,6 +12,11 @@ function getmovielensdata1m(dir)
     run(unpack_cmd(path,dir,".zip", ""))
 end
 
+"""
+    MovieLens()::Persa.TimeCFDataset
+
+Return MovieLens 100k dataset.
+"""
 function MovieLens()::Persa.TimeCFDataset
   file = "$(defdir)/ml-100k/u.data"
 
@@ -29,6 +34,11 @@ function MovieLens()::Persa.TimeCFDataset
   return Persa.Dataset(df)
 end
 
+"""
+    MovieLens1M()::Persa.TimeCFDataset
+
+Return MovieLens 1M dataset.
+"""
 function MovieLens1M()::Persa.TimeCFDataset
   file = "$(defdir)/ml-1m/ratings.dat"
 
