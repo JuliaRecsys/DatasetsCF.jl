@@ -1,4 +1,4 @@
-const defdir = joinpath(Pkg.dir("DatasetsCF"), "datasets")
+const defdir = joinpath(dirname(@__FILE__), "..", "datasets")
 
 function getmovielensdata(dir)
     mkpath(dir)
