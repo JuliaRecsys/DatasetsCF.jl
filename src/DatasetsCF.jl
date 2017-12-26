@@ -7,5 +7,6 @@ using DataFrames
 using BinDeps
 
 include("movielens.jl")
+include("others.jl")
 
 end # module
