@@ -24,7 +24,7 @@ function MovieLens()::Persa.Dataset
 
 	file = CSV.read(filename, delim = '	',
 	                      header = [:user, :item, :rating, :timestamp],
-	                      nullable = false)
+	                      allowmissing = :none)
 
 	df = DataFrame()
 
@@ -48,7 +48,7 @@ function MovieLens1M()::Persa.Dataset
 
     file = CSV.read(filename, delim = "::",
 							header = [:user, :trash1, :item, :trash2, :rating, :trash3, :timestamp],
-							nullable = true)
+							allowmissing = :all)
 
     df = DataFrame()
 
