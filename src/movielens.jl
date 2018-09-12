@@ -1,57 +1,62 @@
 const defdir = joinpath(dirname(@__FILE__), "..", "datasets")
 
 function getmovielensdata(dir)
-    mkpath(dir)
-    path = download("http://files.grouplens.org/datasets/movielens/ml-100k.zip")
-    run(unpack_cmd(path,dir,".zip", ""))
+	mkpath(dir)
+	path = download("http://files.grouplens.org/datasets/movielens/ml-100k.zip")
+	run(unpack_cmd(path,dir,".zip", ""))
 end
 
 function getmovielensdata1m(dir)
-    mkpath(dir)
-    path = download("http://files.grouplens.org/datasets/movielens/ml-1m.zip")
-    run(unpack_cmd(path,dir,".zip", ""))
+	mkpath(dir)
+	path = download("http://files.grouplens.org/datasets/movielens/ml-1m.zip")
+	run(unpack_cmd(path,dir,".zip", ""))
 end
 
 """
-    MovieLens()::Persa.TimeCFDataset
+    MovieLens()::Persa.Dataset
 
 Return MovieLens 100k dataset.
 """
-function MovieLens()::Persa.TimeCFDataset
-  file = "$(defdir)/ml-100k/u.data"
+function MovieLens()::Persa.Dataset
+	filename = "$(defdir)/ml-100k/u.data"
 
-  isfile(file) || getmovielensdata(defdir)
+	isfile(filename) || getmovielensdata(defdir)
 
-  file = readtable(file, separator = ' ', header = false)
+	file = CSV.read(filename, delim = '	',
+	                      header = [:user, :item, :rating, :timestamp],
+	                      nullable = false)
 
-  df = DataFrame()
+	df = DataFrame()
 
-  df[:user] = file[:,1]
-  df[:item] = file[:,2]
-  df[:rating] = file[:,3]
-  df[:timestamp] = file[:,4]
+	df[:user] = file[:,1]
+	df[:item] = file[:,2]
+	df[:rating] = file[:,3]
+	df[:timestamp] = file[:,4]
 
-  return Persa.Dataset(df)
+	return Persa.Dataset(df)
 end
 
 """
-    MovieLens1M()::Persa.TimeCFDataset
+    MovieLens1M()::Persa.Dataset
 
 Return MovieLens 1M dataset.
 """
-function MovieLens1M()::Persa.TimeCFDataset
-  file = "$(defdir)/ml-1m/ratings.dat"
+function MovieLens1M()::Persa.Dataset
+    filename = "$(defdir)/ml-1m/ratings.dat"
 
-  isfile(file) || getmovielensdata1m(defdir)
+    isfile(filename) || getmovielensdata1m(defdir)
 
-  file = readtable(file, separator = ':', header = false)
+    file = CSV.read(filename, delim = "::",
+							header = [:user, :trash1, :item, :trash2, :rating, :trash3, :timestamp],
+							nullable = true)
 
-  df = DataFrame()
+    df = DataFrame()
 
-  df[:user] = file[:,1]
-  df[:item] = labelencode(labelmap(file[:,3]), file[:,3])
-  df[:rating] = file[:,5]
-  df[:timestamp] = file[:,7]
+	df[:user] = convert(Array{Int}, file[:user])
+	df[:item] = convert(Array{Int}, file[:item])
+	df[:item] = labelencode(labelmap(df[:item]), df[:item])
+	df[:rating] = convert(Array{Int}, file[:rating])
+	df[:timestamp] = convert(Array{Int}, file[:timestamp])
 
-  return Persa.Dataset(df)
+    return Persa.Dataset(df)
 end
