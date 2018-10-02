@@ -26,14 +26,7 @@ function MovieLens()::Persa.Dataset
 	                      header = [:user, :item, :rating, :timestamp],
 	                      allowmissing = :none)
 
-	df = DataFrame()
-
-	df[:user] = file[:,1]
-	df[:item] = file[:,2]
-	df[:rating] = file[:,3]
-	df[:timestamp] = file[:,4]
-
-	return Persa.Dataset(df)
+	return Persa.Dataset(file)
 end
 
 """
@@ -47,7 +40,7 @@ function MovieLens1M()::Persa.Dataset
     isfile(filename) || getmovielensdata1m(defdir)
 
     file = CSV.read(filename, delim = "::",
-							header = [:user, :trash1, :item, :trash2, :rating, :trash3, :timestamp],
+							header = [:user, :item, :rating, :timestamp],
 							allowmissing = :all)
 
     df = DataFrame()

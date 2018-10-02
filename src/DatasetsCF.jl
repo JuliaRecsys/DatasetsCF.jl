@@ -2,7 +2,7 @@ module DatasetsCF
 
 # package code goes here
 using Persa
-using MLBase
+using MLBase: labelencode, labelmap
 using DataFrames
 using BinDeps
 using CSV
