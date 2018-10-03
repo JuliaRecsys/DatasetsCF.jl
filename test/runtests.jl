@@ -1,17 +1,18 @@
+using Persa
 using DatasetsCF
-using Base.Test
+using Test
 
 # write your own tests here
 ds = DatasetsCF.MovieLens()
-@test ds.users == 943
-@test ds.items == 1682
-@test length(ds.preferences.possibles) == 5
-@test ds.preferences.min == 1
-@test ds.preferences.max == 5
+@test Persa.users(ds) == 943
+@test Persa.items(ds) == 1682
+@test Persa.size(ds.preference) == 5
+@test Persa.minimum(ds.preference) == 1
+@test Persa.maximum(ds.preference) == 5
 
 ds = DatasetsCF.MovieLens1M()
-@test ds.users == 6040
-@test ds.items == 3706
-@test length(ds.preferences.possibles) == 5
-@test ds.preferences.min == 1
-@test ds.preferences.max == 5
+@test Persa.users(ds) == 6040
+@test Persa.items(ds) == 3706
+@test Persa.size(ds.preference) == 5
+@test Persa.minimum(ds.preference) == 1
+@test Persa.maximum(ds.preference) == 5
