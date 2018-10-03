@@ -17,7 +17,9 @@ julia> dataset = DatasetsCF.MovieLens();
 
 julia> using Persa
 
-julia> μ = Persa.mean(dataset)
+julia> using Statistic
+
+julia> μ = mean(dataset)
 3.52986
 ```
 
