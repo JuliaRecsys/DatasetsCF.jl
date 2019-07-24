@@ -22,9 +22,9 @@ function MovieLens()::Persa.Dataset
 
 	isfile(filename) || getmovielensdata(defdir)
 
-	file = CSV.read(filename, delim = '	',
+	file = DataFrame(CSV.read(filename, delim = '\t',
 	                      header = [:user, :item, :rating, :timestamp],
-	                      allowmissing = :none)
+						  types = [Int, Int, Int, Int]))
 
 	return Persa.Dataset(file)
 end
@@ -41,15 +41,15 @@ function MovieLens1M()::Persa.Dataset
 
     file = CSV.read(filename, delim = "::",
 							header = [:user, :item, :rating, :timestamp],
-							allowmissing = :all)
+							types = [Int, Int, Int, Int])
 
     df = DataFrame()
 
-	df[:user] = convert(Array{Int}, file[:user])
-	df[:item] = convert(Array{Int}, file[:item])
-	df[:item] = labelencode(labelmap(df[:item]), df[:item])
-	df[:rating] = convert(Array{Int}, file[:rating])
-	df[:timestamp] = convert(Array{Int}, file[:timestamp])
+	df[!, :user] = convert(Array{Int}, file[!, :user])
+	df[!, :item] = convert(Array{Int}, file[!, :item])
+	df[!, :item] = labelencode(labelmap(df[!, :item]), df[!, :item])
+	df[!, :rating] = convert(Array{Int}, file[!, :rating])
+	df[!, :timestamp] = convert(Array{Int}, file[!, :timestamp])
 
     return Persa.Dataset(df)
 end
