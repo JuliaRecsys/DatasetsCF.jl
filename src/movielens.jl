@@ -1,15 +1,15 @@
 const defdir = joinpath(dirname(@__FILE__), "..", "datasets")
 
 function getmovielensdata(dir)
-	mkpath(dir)
-	path = download("http://files.grouplens.org/datasets/movielens/ml-100k.zip")
-	run(unpack_cmd(path,dir,".zip", ""))
+   	mkpath(dir)
+   	path = download("http://files.grouplens.org/datasets/movielens/ml-100k.zip")
+   	run(unpack_cmd(path, dir, ".zip", ""))
 end
 
 function getmovielensdata1m(dir)
-	mkpath(dir)
-	path = download("http://files.grouplens.org/datasets/movielens/ml-1m.zip")
-	run(unpack_cmd(path,dir,".zip", ""))
+   	mkpath(dir)
+   	path = download("http://files.grouplens.org/datasets/movielens/ml-1m.zip")
+   	run(unpack_cmd(path, dir, ".zip", ""))
 end
 
 """
@@ -18,15 +18,15 @@ end
 Return MovieLens 100k dataset.
 """
 function MovieLens()::Persa.Dataset
-	filename = "$(defdir)/ml-100k/u.data"
+   	filename = "$(defdir)/ml-100k/u.data"
 
-	isfile(filename) || getmovielensdata(defdir)
+   	isfile(filename) || getmovielensdata(defdir)
 
-	file = DataFrame(CSV.read(filename, delim = '\t',
+   	file = DataFrame(CSV.read(filename, delim = '\t',
 	                      header = [:user, :item, :rating, :timestamp],
 						  types = [Int, Int, Int, Int]))
 
-	return Persa.Dataset(file)
+   	return Persa.Dataset(file)
 end
 
 """
@@ -45,11 +45,11 @@ function MovieLens1M()::Persa.Dataset
 
     df = DataFrame()
 
-	df[!, :user] = convert(Array{Int}, file[!, :user])
-	df[!, :item] = convert(Array{Int}, file[!, :item])
-	df[!, :item] = labelencode(labelmap(df[!, :item]), df[!, :item])
-	df[!, :rating] = convert(Array{Int}, file[!, :rating])
-	df[!, :timestamp] = convert(Array{Int}, file[!, :timestamp])
+   	df[!, :user] = convert(Array{Int}, file[!, :user])
+   	df[!, :item] = convert(Array{Int}, file[!, :item])
+   	df[!, :item] = labelencode(labelmap(df[!, :item]), df[!, :item])
+   	df[!, :rating] = convert(Array{Int}, file[!, :rating])
+   	df[!, :timestamp] = convert(Array{Int}, file[!, :timestamp])
 
     return Persa.Dataset(df)
 end
