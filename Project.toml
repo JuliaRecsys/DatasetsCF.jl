@@ -13,6 +13,8 @@ Persa = "86800b63-3017-5277-aca5-15d7d6a5f2b2"
 [compat]
 julia = "1"
 Persa = "0.1"
+DataFrames = "1.1"
+CSV = "0.8"
 
 [extras]
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
