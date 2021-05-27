@@ -28,8 +28,8 @@ List of package datasets:
 
 Dataset      | Title
 -------------|------------------------------------------------------------------------
-MovieLens 100k  | This is a set of 100,000 ratings given by a set of users to a set of movies.
-MovieLens 1M    | This is a set of 10,000,000 ratings given by a set of users to a set of movies.
+[MovieLens 100k](https://grouplens.org/datasets/movielens/100k/)  | This is a set of 100,000 ratings given by a set of users to a set of movies.
+[MovieLens 1M](https://grouplens.org/datasets/movielens/1m/)    | This is a set of 10,000,000 ratings given by a set of users to a set of movies.
 
 
 [ci-img]: https://img.shields.io/github/checks-status/JuliaRecsys/DatasetsCF.jl/master?style=flat-square
