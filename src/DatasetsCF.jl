@@ -8,6 +8,5 @@ using BinDeps
 using CSV
 
 include("movielens.jl")
-#include("others.jl")
 
 end # module
