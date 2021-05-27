@@ -1,7 +1,7 @@
 name = "DatasetsCF"
 uuid = "6bac03b7-bcd8-55bf-9a08-86b9b673b6cc"
 authors = ["Filipe Braida <filipebraida@gmail.com>"]
-version = "0.3.1"
+version = "0.4.0"
 
 [deps]
 BinDeps = "9e28174c-4ba2-5203-b857-d8d62c4213ee"
