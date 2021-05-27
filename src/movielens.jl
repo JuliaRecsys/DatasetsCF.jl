@@ -22,9 +22,9 @@ function MovieLens()::Persa.Dataset
 
    	isfile(filename) || getmovielensdata(defdir)
 
-   	file = DataFrame(CSV.read(filename, delim = '\t',
-	                      header = [:user, :item, :rating, :timestamp],
-						  types = [Int, Int, Int, Int]))
+   	file = CSV.read(filename, DataFrame, delim = '\t',
+					header = [:user, :item, :rating, :timestamp],
+					types = [Int, Int, Int, Int])
 
    	return Persa.Dataset(file)
 end
@@ -39,9 +39,9 @@ function MovieLens1M()::Persa.Dataset
 
     isfile(filename) || getmovielensdata1m(defdir)
 
-    file = CSV.read(filename, delim = "::",
-							header = [:user, :item, :rating, :timestamp],
-							types = [Int, Int, Int, Int])
+    file = CSV.read(filename, DataFrame, delim = "::",
+						header = [:user, :item, :rating, :timestamp],
+						types = [Int, Int, Int, Int])
 
     df = DataFrame()
 
