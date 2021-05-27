@@ -1,7 +1,7 @@
 # DatasetsCF.jl - Collection of Collaborative Datasets
 
-![][ci-img]][ci-url]
-![][codecov-img]][codecov-url]
+[![][ci-img]][ci-url]
+[![][codecov-img]][codecov-url]
 
 **Installation**: at the Julia REPL, `Pkg.add("DatasetsCF")`
 
