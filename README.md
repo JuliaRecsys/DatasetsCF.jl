@@ -1,8 +1,7 @@
 # DatasetsCF.jl - Collection of Collaborative Datasets
 
-[![Build Status](https://travis-ci.org/JuliaRecsys/DatasetsCF.jl.svg?branch=master)](https://travis-ci.org/JuliaRecsys/DatasetsCF.jl)
-[![Coverage Status](https://coveralls.io/repos/JuliaRecsys/DatasetsCF.jl/badge.svg?branch=master&service=github)](https://coveralls.io/github/JuliaRecsys/DatasetsCF.jl?branch=master)
-[![codecov.io](http://codecov.io/github/JuliaRecsys/DatasetsCF.jl/coverage.svg?branch=master)](http://codecov.io/github/JuliaRecsys/DatasetsCF.jl?branch=master)
+![][ci-img]][ci-url]
+![][codecov-img]][codecov-url]
 
 **Installation**: at the Julia REPL, `Pkg.add("DatasetsCF")`
 
@@ -31,3 +30,10 @@ Dataset      | Title
 -------------|------------------------------------------------------------------------
 MovieLens 100k  | This is a set of 100,000 ratings given by a set of users to a set of movies.
 MovieLens 1M    | This is a set of 10,000,000 ratings given by a set of users to a set of movies.
+
+
+[ci-img]: https://img.shields.io/github/checks-status/JuliaRecsys/DatasetsCF.jl/master?style=flat-square
+[ci-url]: https://github.com/JuliaRecsys/DatasetsCF.jl/actions
+
+[codecov-img]: https://img.shields.io/codecov/c/github/JuliaRecsys/DatasetsCF.jl?style=flat-square
+[codecov-url]: https://codecov.io/gh/JuliaRecsys/DatasetsCF.jl
