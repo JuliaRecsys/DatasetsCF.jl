@@ -2,13 +2,13 @@ const defdir = joinpath(dirname(@__FILE__), "..", "datasets")
 
 function getmovielensdata(dir)
    	mkpath(dir)
-   	path = download("http://files.grouplens.org/datasets/movielens/ml-100k.zip")
+   	path = Downloads.download("http://files.grouplens.org/datasets/movielens/ml-100k.zip")
    	run(unpack_cmd(path, dir, ".zip", ""))
 end
 
 function getmovielensdata1m(dir)
    	mkpath(dir)
-   	path = download("http://files.grouplens.org/datasets/movielens/ml-1m.zip")
+   	path = Downloads.download("http://files.grouplens.org/datasets/movielens/ml-1m.zip")
    	run(unpack_cmd(path, dir, ".zip", ""))
 end
 
